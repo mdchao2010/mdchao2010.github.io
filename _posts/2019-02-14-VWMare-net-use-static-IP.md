@@ -21,12 +21,12 @@ tags: VMware centos7
 
 2.可以看到虚拟网卡VMnet8的IP变成了192.168.101.1
 
-![avatar](../img/2019-2-14-VWMare/vwnet8_ip.png)
+![avatar](/img/2019-2-14-VWMare/vwnet8_ip.png)
 
 3.查看网关。编辑 > 虚拟网络编辑器 > 选择VMnet8 > Nat设置。
 可以看到网关的IP为192.168.101.2。
 
-![gatway](../img/2019-2-14-VWMare/vwnet8_gatway.png)
+![gatway](/img/2019-2-14-VWMare/vwnet8_gatway.png)
 
 
 ### 配置虚拟机的静态IP
@@ -71,11 +71,11 @@ systemctl restart network
 
 1.虚拟机ping外网
 
-![ping](../img/2019-2-14-VWMare/vm_ping_baidu.png)
+![ping](/img/2019-2-14-VWMare/vm_ping_baidu.png)
 
 2.本主机ping虚拟机。在cmd中ping 192.168.101.130
 
-![ping](../img/2019-2-14-VWMare/host_ping_vm.png)
+![ping](/img/2019-2-14-VWMare/host_ping_vm.png)
 
 ### 采坑指南
 
@@ -83,15 +83,15 @@ systemctl restart network
 
 新克隆的虚拟机ifconfig显示网卡的配置如下
 
-![ifconfig](../img/2019-2-14-VWMare/ifconfig_faild.png)
+![ifconfig](/img/2019-2-14-VWMare/ifconfig_faild.png)
 
 可以看出网卡的名称是ens33，进入网卡配置文件目录，并没有ens33网卡配置，只有centos7默认的eno16777736
 
-![notfind](../img/2019-2-14-VWMare/network_notfind.png)
+![notfind](/img/2019-2-14-VWMare/network_notfind.png)
 
 看一下配置的内容
 
-![old_setting](../img/2019-2-14-VWMare/network_setting_old.png)
+![old_setting](/img/2019-2-14-VWMare/network_setting_old.png)
 
 
 **解决办法**
@@ -100,10 +100,10 @@ systemctl restart network
 第一处网卡名：/etc/sysconfig/network-scripts/`ifcfg-eth0` ，
 第二处配置文件里面：NAME=`eth0`，第三处也是配置文件里面：DEVICE=`eth0`
 
-![setting](../img/2019-2-14-VWMare/network_setting.png)
+![setting](/img/2019-2-14-VWMare/network_setting.png)
 
 HWADDR的值一定要与eth0的值一直否则会网卡启动会失败
 
-![ifconfig_success](../img/2019-2-14-VWMare/ifconfig_success.png)
+![ifconfig_success](/img/2019-2-14-VWMare/ifconfig_success.png)
 
 重启系统reboot就能生效了。
