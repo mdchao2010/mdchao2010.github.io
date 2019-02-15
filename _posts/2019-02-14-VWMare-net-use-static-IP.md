@@ -28,6 +28,9 @@ tags: VMware centos7
 
 ![gatway](/img/2019-2-14-VWMare/vwnet8_gatway.png)
 
+4.为虚拟机修改网络配置
+
+![net_conf](/img/2019-2-14-VWMare/use_vwnet8.png)
 
 ### 配置虚拟机的静态IP
 
