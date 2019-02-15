@@ -16,7 +16,7 @@ tags: VMware centos7
 1.编辑 > 虚拟网络编辑器。选择VMnet8。配置子网IP:192.168.101.0。
 去掉Use local DHCP service to distribute IP address to VMs选项。
 
-![avatar](../img/2019-2-14-VWMare/edit_vmnet8.png)
+![avatar](img/2019-2-14-VWMare/edit_vmnet8.png)
 
 
 2.可以看到虚拟网卡VMnet8的IP变成了192.168.101.1
