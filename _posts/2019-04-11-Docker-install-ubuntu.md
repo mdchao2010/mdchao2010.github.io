@@ -24,12 +24,24 @@ uname -r
 Docker老版本（例如1.13），叫做docker-engine。Docker进入17.x版本后，名称发生了变化，叫做docker-ce或者docker-ee。
 因此，如果有安装老版本的Docker，必须先删除老版本的Docker。
 
-执行以下命令即可：
+1.确认安装了docker
+
 ```bash
- sudo apt-get remove docker docker-engine docker.io
+dpkg -l | grep -i docker
+```
+2.删除旧docker版本：
+```bash
+ sudo apt-get purge -y docker-engine docker docker.io docker-ce  
+ sudo apt-get autoremove -y --purge docker-engine docker docker.io docker-ce
 ```
 需要注意的是，执行该命令只会卸载Docker本身，而不会删除Docker内容，例如镜像、容器、卷以及网络。这些文件保
 存在`/var/lib/docker` 目录中，需要手动删除。
+```bash
+sudo rm -rf /var/lib/docker
+sudo rm /etc/apparmor.d/docker
+sudo groupdel docker
+sudo rm -rf /var/run/docker.sock
+```
 
 ### 安装步骤
 
